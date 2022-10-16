@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
-{
+{    protected $guarded =[];
     public function ads()
     {
         return $this->belongsToMany('App\Models\Ad', 'ad_tags');

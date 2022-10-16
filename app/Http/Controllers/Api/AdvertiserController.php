@@ -45,10 +45,10 @@ class AdvertiserController extends Controller
       ]);
     } else {
       return response()->json([
-        'status' => false,
-        'msg' => 'something went wrong',
-        'data' => ''
-      ]);
+        'status'=>false,
+        'msg'=>"something went wrong",
+        'error-code'=>401
+     ]);
     }
   }
 }

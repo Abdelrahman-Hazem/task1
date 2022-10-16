@@ -28,7 +28,7 @@ class TagController extends Controller
         return response()->json([
             'status'=>false,
             'msg'=>"something went wrong",
-            'error-code'=>6003
+            'error-code'=>401
          ]);
        }
     }
@@ -37,12 +37,16 @@ class TagController extends Controller
     {
         $tag = Tag::where('id',$request->id)->get();
         if($tag){
-        return response()->json($tag);
+            return response()->json([
+                'status'=>true,
+                'msg'=>"success",
+                'data'=>$tag
+            ]);
         }else{
             return response()->json([
                 'status'=>false,
                 'msg'=>"something went wrong",
-                'error-code'=>6004
+                'error-code'=>401
              ]);
         }
     }
@@ -65,7 +69,7 @@ class TagController extends Controller
                 return response()->json([
                     'status'=>false,
                     'msg'=>"something went wrong",
-                    'error-code'=>6004
+                    'error-code'=>401
                  ]);
             }
     }
@@ -83,7 +87,7 @@ class TagController extends Controller
                 return response()->json([
                     'status'=>false,
                     'msg'=>"something went wrong",
-                    'error-code'=>6005
+                    'error-code'=>401
                  ]);
             }
     }

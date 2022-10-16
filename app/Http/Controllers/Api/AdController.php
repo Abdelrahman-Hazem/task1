@@ -28,9 +28,18 @@ class AdController extends Controller
        $ad->save();
 
        if($ad){
-        return" Data has been saved "; 
+        return response()->json([
+            'status'=>true,
+            'msg'=>"data has been saved",
+            'data'=>''
+        ]);
+
        }else{
-         "something went wrong" ;
+        return response()->json([
+            'status'=>false,
+            'msg'=>"something went wrong",
+            'error-code'=>401
+         ]);
        }
     }
 
@@ -39,9 +48,17 @@ class AdController extends Controller
         $ad_query = Ad::where('id',$request->id)->first();
         $ad = new AdsResource($ad_query);
         if($ad){
-            return response()->json($ad);
+            return response()->json([
+                'status'=>true,
+                'msg'=>"success",
+                'data'=>$ad
+            ]);
         }else{
-            return "Something went wrong";
+            return response()->json([
+                'status'=>false,
+                'msg'=>"something went wrong",
+                'error-code'=>401
+             ]);
         }
     }   
     
@@ -66,9 +83,17 @@ class AdController extends Controller
         ]);
 
         if($ad){
-            return "Data has been updated";
+            return response()->json([
+                'status'=>true,
+                'msg'=>"data has been updated",
+                'data'=>''
+            ]);
         }else{
-            return "Something went wrong";
+             return response()->json([
+                'status'=>false,
+                'msg'=>"something went wrong",
+                'error-code'=>401
+             ]);
         }
 
     }
@@ -77,9 +102,17 @@ class AdController extends Controller
     {
         $ad = Ad::where('id' ,$request->id)->delete();
         if($ad){
-            return"Data has been deleted" ;
+            return response()->json([
+                'status'=>true,
+                'msg'=>"data has been deleted",
+                'data'=>''
+            ]);
         }else{
-            return "Something went wrong";
+             return response()->json([
+                'status'=>false,
+                'msg'=>"something went wrong",
+                'error-code'=>401
+             ]);
         }
     }
 }
